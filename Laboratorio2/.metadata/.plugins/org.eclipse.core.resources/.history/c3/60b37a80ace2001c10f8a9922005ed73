@@ -1,0 +1,8 @@
+package classesBonus;
+
+public class Snippet {
+	public static void main(String[] args) {
+		\frac{4k^3+12k^2+23k+9}{6}
+	}
+}
+

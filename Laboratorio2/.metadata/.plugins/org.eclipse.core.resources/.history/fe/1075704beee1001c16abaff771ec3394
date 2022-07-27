@@ -1,0 +1,196 @@
+package classesPrincipais;
+
+
+/**
+ * Classe responsável pelas atividades complementares, como: Estagios, projetos ,cursos e
+ * a quantidade de créditos obtidas nessas atividades.
+ * 
+ *  @author Gabriel Yuri Ramalho Ferreira.
+ */
+
+public class AtividadesComplementares {
+	/*
+	 * Os 3 atributos abaixos são responsáveis por armazenar
+	 * a quantidade de horas dedicadas a cada tipo de atividade.
+	 */
+	private int horasEstagios;
+	private int mesesProjetos;
+	private double horasCursos;
+	private int mesesEstagios;
+	
+	/*
+	 * Os 3 atributos abaixo são responsáveis por armazenar
+	 * a quantidade de creditos adquiridos em cada atividade.
+	 */
+	private int creditosEstagios, creditosProjetos, creditosCursos;
+	
+	/*
+	 * Armazenar o total de creditos de acumulados em todas
+	 * as atividades.
+	 */
+	private int creditosTotais;
+	
+	/* Vetor de String, onde cada posição corresponde
+	 * a um estagio cadastrado, no formato: "Estagio + horas".
+	 * 
+	 */
+	private String[] estagios = new String[9];
+	
+	/*
+	 * Vetor de String, onde cada posição corresponde
+	 * a um projeto cadastrado, no formateo: "Projeto + horas".
+	 */
+	private String[] projetos = new String[16];
+	
+	/*
+	 * Atributo responsável por contabilizar o total
+	 * de atividades cadastradas.
+	 */
+	private int contaAtividades;
+	
+	/*
+	 * Vetor responsável por armazenar todas as informações adquiridas
+	 * pelo objeto.
+	 */
+	private String[] resumoAtividades = new String[29];
+	
+	/*
+	 * 	Método que atribui um valor ao atributo horasEstagios
+	 *  e adiciona um estagio dentro do vetor estagios[].
+	 */
+	public void adicionarEstagio(int horas) {
+		this.horasEstagios = horas;
+		this.mesesEstagios = 4;
+		
+		for(int i = 0; i < 9; i++) {
+			if (estagios[i] == null) {
+				estagios[i] = "Estagio" + (i+1) + " " +"Meses: " + this.mesesEstagios
+				+", Horas: " + horas;
+				contaAtividades++;
+				break;
+			}
+		}
+		
+	}
+	
+	public void adicionarEstagio(int horas, int mesesEstagios) {
+		this.horasEstagios = horas;
+		this.mesesEstagios = mesesEstagios;
+		this.creditosEstagios = (this.horasEstagios / 300) * 5;
+		
+		for(int i = 0; i < 9; i++) {
+			if (estagios[i] == null) {
+				estagios[i] = "Estagio" + (i+1) + " " +"Meses: " + this.mesesEstagios
+				+", Horas: " + horas;
+				contaAtividades++;
+				break;
+			}
+		}
+		
+		
+	}
+	
+	/*
+	 * 	Método que atribui um valor ao atributo mesesProjetos
+	 *  e adiciona um projeto dentro do vetor projetos[].
+	 */
+	public void adicionarProjeto(int meses) {
+		this.mesesProjetos = meses; 
+		
+		for(int i = 0; i < 16; i++) {
+			if (projetos[i] == null) {
+				projetos[i] = "Projeto" + (i+1) + " " + meses;
+				contaAtividades++;
+				break;
+			}
+		}	
+		
+	}
+	
+	/*
+	 * Atribui um valor em horas ao atributo horasCursos.
+	 */
+	public void adicionarCurso(double horas) {
+		this.horasCursos += horas;	
+		
+	}
+	
+	/**
+	 * Responsável por contabilizar os creditos de cada atividade e depois
+	 * gerar o total de creditos adquiridos.
+	 * 
+	 * @return Um inteiro que é a quantidade de creditos totais.
+	 */
+	public int contaCreditos() {
+		
+		this.creditosEstagios = (this.horasEstagios / 300) * 5;
+		this.creditosProjetos = (this.mesesProjetos / 3) * 2;
+		this.creditosCursos = ((int)this.horasCursos / 30);
+		this.creditosTotais = this.creditosEstagios + this.creditosProjetos + this.creditosCursos;
+		
+		return creditosTotais;
+	}
+	
+	/**
+	 * Pega informações relevantes das atividades complementares e coloca
+	 * no vetor resumoAtividades e depois realiza uma cópia para o vetor
+	 * resumoAtividades2 para evitar valores nulos.
+	 * 
+	 * @return um vetor de String contendo o tempo e créditos
+	 * de cada atividade.
+	 */
+	public String[] pegaAtividades() {
+		
+		
+		contaCreditos();
+		
+		
+//		 int creditosEstagios2 = ((this.horasEstagios / 300) * 5);
+//		 int creditosProjetos2 = ((this.mesesProjetos / 3) * 2) + creditosProjetos ;
+//		 int creditosCursos2 = (((int)this.horasCursos / 30));
+		 
+		 
+		 int contaAtividades = 0;
+		for(int i = 0; i < 9; i++) {
+			if(estagios[i] != null) {
+				resumoAtividades[i] = estagios[i];
+				contaAtividades++;
+				
+			}
+			
+		}
+		
+		for(int i = 0; i < 16; i++) {
+			if(projetos[i] != null) {
+				resumoAtividades[contaAtividades] = projetos[i];
+				contaAtividades++;
+				
+			}
+			
+					
+		}
+		
+		
+		resumoAtividades[contaAtividades] = "Cursos " + this.horasCursos;
+		resumoAtividades[contaAtividades + 1] = "Creditos_Estagio " + this.creditosEstagios;
+		resumoAtividades[contaAtividades + 2] = "Creditos_Projeto " + this.creditosProjetos;
+		resumoAtividades[contaAtividades + 3] = "Creditos_Cursos " + this.creditosCursos;
+		
+		String[] resumoAtividades2 = new String[contaAtividades + 4];
+		
+		for(int i = 0; i < resumoAtividades2.length; i++) {
+			if(resumoAtividades[i] != null) {
+				resumoAtividades2[i] = resumoAtividades[i];	
+			}
+			
+		}
+		
+		
+		return resumoAtividades2;
+	}
+		
+	}
+
+	
+
+

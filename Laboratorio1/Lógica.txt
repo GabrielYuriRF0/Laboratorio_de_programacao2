@@ -1,0 +1,9 @@
+Objetivo geral: Ler uma listas de nomes até encontrar o nome "wally"
+
+Passo 1: Ler uma linha de nomes e realizar o Split.
+
+Passo 2: Verificar o arraylist de nomes começando pelo fim, analisando o tamanho  do nome.
+
+    - Se o nome na posição mais próxima ao fim tiver 5 letras, printar.
+    - Se não, ir para o nome anterior.
+    - Caso não tenha nenhum nome que se encaixe, printar "?".

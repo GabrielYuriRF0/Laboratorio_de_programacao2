@@ -1,0 +1,152 @@
+package classesPrincipais;
+import java.util.Arrays;
+import java.util.ArrayList;
+
+
+/**
+* Classe responsável por informações referentes a uma disciplina
+* como: nome, horas necessárias, notas. Também é responsável por calcular a
+* média e definir se um aluno foi aprovado ou não
+*
+* @author Gabriel Yuri Ramalho Ferreira
+*/
+public class Disciplina {
+	/*
+	* Vai armazenar o nome da disciplina e esse nome pode ser 
+	* simples ou composto.
+	*/
+	private String nomeDisciplina = new String();
+	
+	
+	
+	/*
+	 * Horas de estudos referentes a uma disciplina.
+	 */
+	private int horasCadastradas;
+	
+	/*
+	 * Atributo responsável por receber a média das 4 notas. 
+	 */
+	private double media;
+	
+	private int quantidadeNotas;
+	/*
+	 * Array de 4 posições onde cada posição vai armazenar uma nota
+	 * em formato double.
+	 */
+	private ArrayList<Double> notas = new ArrayList<>();
+	private ArrayList<Integer> pesosNotas = new ArrayList<>();
+	
+	
+	 
+	
+	public Disciplina(String nomeDisciplina, int quantidadeNotas){
+		this.nomeDisciplina = nomeDisciplina;
+		this.quantidadeNotas = quantidadeNotas;
+		this.pesosNotas.add(0);
+		this.pesosNotas.add(0);
+		
+		
+	}
+	
+	public Disciplina(String nomeDisciplina, int quantidadeNotas, int[] pesosNotas) {
+		this.nomeDisciplina = nomeDisciplina;
+		this.quantidadeNotas = quantidadeNotas;
+		
+		
+		for(int i = 0; i < pesosNotas.length; i++) {
+			this.pesosNotas.add(pesosNotas[i]);
+			
+		}
+	}
+	
+	
+	
+	/**
+	 * Construtor para criar um objeto apenas passando 
+	 * o nome da disciplina.
+	 * 
+	 * @param nomeDisciplina: é uma string, podendo
+	 * ser composta ou não.
+	 */
+	public Disciplina(String nomeDisciplina) {
+		this.nomeDisciplina = nomeDisciplina;
+	}
+	
+	/*
+	 * Método para atribuir valores ao atributo
+	 * horasCadastradas, de maneira acumulativa.
+	 */
+	public void cadastraHoras(int horas) {
+		this.horasCadastradas += horas;
+	}
+	
+	/*
+	 * Métodos para cadastrar as 4 notas de uma disciplina
+	 * onde cada posição do vetor corresponde a uma nota.
+	 */
+	public void cadastraNota(int nota, double valorNota) {
+		this.notas.add(valorNota);
+		
+	}
+	/**
+	 * Método que vai calcular a média e exibir como saída um
+	 * booleano indicando o status de aprovação do aluno.
+	 * 
+	 * @return um booleano que é true caso o aluno seja aprovado
+	 * e false caso contrário.
+	 */
+	public boolean aprovado(){
+		boolean statusAprovado = false;
+		double soma = 0.0;
+		
+		
+		if(this.pesosNotas.get(0) == 0) {
+			for(int j = 0; j < this.notas.size(); j++) {
+				soma += this.notas.get(j);
+			}
+			
+			
+			this.media = soma / this.notas.size();
+			
+			if(this.media >= 7) {
+				statusAprovado = true;
+			}
+			
+		}
+			
+		
+			
+		
+		
+		
+		
+		return statusAprovado;	
+	}
+	
+	
+	/**
+	 * Método que vai concatenar informações referentes ao aluno em uma só String.
+	 * 
+	 * @return Uma String contendo o nome da disciplina, horas cadastradas, media
+	 * e notas.
+	 */
+	public String toString() {
+		double[] notasVetor = new double[this.notas.size()];
+		
+		for(int i = 0; i < this.notas.size(); i++) {
+			notasVetor[i] = this.notas.get(i);
+		}
+		return this.nomeDisciplina + " " + Integer.toString(this.horasCadastradas)+ " "
+		+ Double.toString(this.media) + " " + Arrays.toString(notasVetor);
+		
+	}
+
+	
+	
+
+	
+	
+	
+
+}
