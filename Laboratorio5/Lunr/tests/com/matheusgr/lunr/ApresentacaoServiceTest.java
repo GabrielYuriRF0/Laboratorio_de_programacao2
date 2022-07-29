@@ -9,8 +9,7 @@ public class ApresentacaoServiceTest extends BaseTest {
 	@Test
 	void testApresentacaoPrimeirasLinhas(){
 		assertEquals("primeira linha\nsegunda linha\nterceira linha", this.apresentacaoController.apresenta(TEXTO5_ID, "Imprimir primeiras 3 linhas"));
-		
-		//assertEquals("", this.apresentacaoController.apresenta(TEXTO5_ID, "Imprimir conteúdo em caixa alta"));	
+		 
 	}
 	
 	@Test

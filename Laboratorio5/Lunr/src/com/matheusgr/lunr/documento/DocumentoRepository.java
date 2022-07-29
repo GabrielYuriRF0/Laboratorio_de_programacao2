@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import com.matheusgr.similaridade.SimilaridadeService;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 /**
@@ -75,11 +76,12 @@ class DocumentoRepository {
 					.collect(Collectors.toSet());
 	}
 	
-	public ArrayList<Documento> buscaAvancada(Map<String, String> metaDados){
-		ArrayList<Documento> documentos = new ArrayList<>();
-		for(Documento documento: this.documentos.values()) {
+	public Set <Documento> busca(Map<String,String> metaDados){ 
+		Set <Documento> documentos = new HashSet();
+		for(Documento documento: this.documentos.values()) {	
 			if(documento.getMetadados().equals(metaDados)) {
-				documentos.add(documento);
+					documentos.add(documento);	
+				
 			}
 			
 		}

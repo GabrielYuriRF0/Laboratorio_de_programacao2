@@ -29,20 +29,18 @@ class BuscaAvancada{
 		(new ValidadorBusca()).valida(metaDados);
 		this.metaDados = metaDados;
 	}
-	
-	public ArrayList <Documento> busca(DocumentoService ds) {
-		ArrayList <Documento> documentos = new ArrayList<>();
-		for (String termo : this.metaDados.values()) {
-			if (termo.isBlank()) {
-				continue;
-			}
-			for (Documento d : ds.busca(termo)) {
-				documentos.add(d);
-			}
+	 
+	public Map <Documento,Integer> busca(DocumentoService ds) {
+		int i = 0;
+		
+		Map <Documento,Integer> respostaDocumentos = new HashMap();
+		
+		for (Documento d : ds.busca(metaDados)) {
+			respostaDocumentos.put(d,i++);
+		}
 		
 		
-	}
-		return documentos;
+		return respostaDocumentos;
 	
 	}
 }

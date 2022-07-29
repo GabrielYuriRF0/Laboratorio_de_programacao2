@@ -46,7 +46,7 @@ public interface Documento {
 	 * 
 	 * @return Mapa com os metadados descrito em forma textual.
 	 */
-	Map<String, String> getMetadados();
+	Map<String, String> getMetadados(); 
 	
 	String getTextoOriginal();
 

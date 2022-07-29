@@ -57,7 +57,6 @@ public class BuscaService {
 		return documentos;
 		
 		
-		return documentos;
 	}
 	
 	

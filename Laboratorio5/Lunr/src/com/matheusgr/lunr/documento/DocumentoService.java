@@ -137,8 +137,8 @@ public class DocumentoService {
 		return this.dr.busca(termo);
 	}
 	
-	public ArrayList <Documento> buscaAvancada(Map<String, String> metaDados) {
-		return this.dr.buscaAvancada(metaDados);
+	public Set <Documento> busca(Map<String,String> metaDados) {
+		return this.dr.busca(metaDados);
 	}
 	
 	
