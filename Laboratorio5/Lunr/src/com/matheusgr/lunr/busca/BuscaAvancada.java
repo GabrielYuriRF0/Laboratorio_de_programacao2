@@ -21,7 +21,7 @@ import com.matheusgr.lunr.documento.DocumentoService;
  *
  */
 
-class BuscaAvancada{
+class BuscaAvancada implements  Busca{
 	
 	private HashMap<String, String> metaDados;
 	
@@ -42,5 +42,13 @@ class BuscaAvancada{
 		
 		return respostaDocumentos;
 	
+	}
+	
+	public String[][] descreveConsulta() {
+		String[][] resultado = new String[this.metaDados.size()][];
+		for (metaDados.) {
+			resultado[i] = new String[] {"TERMO " + (i + 1), this.termos[i]};
+		}
+		return resultado;
 	}
 }
