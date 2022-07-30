@@ -15,14 +15,14 @@ import java.util.Map;
  * 
  * O ID de um documento é único.
  */
-class DocumentoRepository {
+  class DocumentoRepository {
 	private Map<String,Documento> documentos;
 	private ValidadorDocumentos validador;
 
 	/**
 	 * Construção padrão do repositório de documentos.
 	 */
-	DocumentoRepository() {
+	     DocumentoRepository() {
 		this.documentos = new HashMap<>();
 		this.validador = new ValidadorDocumentos();
 		

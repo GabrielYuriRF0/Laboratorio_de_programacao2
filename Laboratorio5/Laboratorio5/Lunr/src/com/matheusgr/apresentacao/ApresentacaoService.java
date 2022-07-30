@@ -1,8 +1,6 @@
 package com.matheusgr.apresentacao;
 
-import java.util.Arrays;
-import java.util.Optional;
-import com.matheusgr.lunr.documento.Documento;
+
 import com.matheusgr.lunr.documento.DocumentoService;
 
 /**
