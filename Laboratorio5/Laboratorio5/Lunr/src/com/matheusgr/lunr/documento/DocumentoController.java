@@ -83,6 +83,12 @@ public class DocumentoController {
 		Documento d = dOpt.get();
 		return Optional.of(new DocumentoDTO(d));
 	}
+	
+	public Documento recuperaDocumentoOuFalhe(String id){
+		this.validador.validacao(id);
+		Documento documento = this.ds.recuperaDocumentoOuFalhe(id);
+		return documento;
+	}
 
 	/**
 	 * Retorna o total de documentos cadastrados no sistema. Os documentos são

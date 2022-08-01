@@ -59,16 +59,26 @@ class DocumentoTest extends BaseTest {
 		assertEquals(4,this.documentoController.totalDocumentos());
 	}
 	
-//	//FIXME rever o teste abaixo!
-//	@Test
-//	void testeConcatenaDocumentos() {
-//		String novoId = this.documentoController.concatenaDocumentos(TEXTO6_ID, TEXTO7_ID);
-//		var documentoOpt = this.documentoController.recuperarDocumento(novoId);
-//		assertTrue(documentoOpt.isPresent());
-//		var doc = documentoOpt.get();
-//		assertEquals("Arquivo de teste 1" + "Arquivo de teste 2",doc.getTextoOriginal());
-//		
-//	}
+	@Test
+	void testeConcatenaDocumentos() {
+		String novoId = this.documentoController.concatenaDocumentos(TEXTO1_ID, TEXTO2_ID);
+		var documentoOpt = this.documentoController.recuperarDocumento(novoId);
+		assertTrue(documentoOpt.isPresent());
+		var doc = documentoOpt.get();
+		assertEquals("um arquivo! texto simples.\r\nuse DUAS linhas apenas." + "um arquivo! texto simples.\r\nuse TRÊS linhas agora.\r\nMAIS AVANÇO!",doc.getTextoOriginal());
+			
+	}
+	
+	@Test
+	void testSumarizaDocumentos() {
+		String[] termosTexto1 ={"apenas", "arquivo","simples","linhas"};
+		assertArrayEquals(termosTexto1,this.documentoController.sumariza(TEXTO1_ID));
+		
+		String[] termosTexto2 = {"arquivo","simples","linhas","AVANÇO"};
+		assertArrayEquals(termosTexto2,this.documentoController.sumariza(TEXTO2_ID));
+		
+		
+	}
 	
 	
 	

@@ -60,7 +60,7 @@ public class DocumentoService {
 	/*
 	 * GAMBARE SENPAI! ٩(＾◡＾)۶ SE NÃO DER CERTO.... GRITE! (✖╭╮✖)
 	 */
-	private Documento recuperaDocumentoOuFalhe(String id) {
+	public Documento recuperaDocumentoOuFalhe(String id) {
 		Optional<Documento> optional = this.dr.recupera(id);
 		if (optional.isEmpty()) {
 			throw new NoSuchElementException("Documento não existe");
@@ -92,13 +92,10 @@ public class DocumentoService {
 	 * @return O ID do novo documento gerado a partir da concatenação.
 	 */
 	public String concatena(String id1, String id2) {
-		Documento d1 = this.recuperaDocumentoOuFalhe(id2);
+		Documento d1 = this.recuperaDocumentoOuFalhe(id1);
 		Documento d2 = this.recuperaDocumentoOuFalhe(id2);
 		String novoId = "_MERGE" + id1 + "|" + id2;
-		String novoTexto = Stream
-				.concat(Stream.of(d1.getTexto()), Stream.of(d2.getTexto()))
-				.collect(Collectors.joining())
-				.toString();
+		String novoTexto = d1.getTextoOriginal() + d2.getTextoOriginal();
 		this.adicionaDocumento(new DocumentoTexto(novoId, novoTexto));
 		return novoId;
 	}

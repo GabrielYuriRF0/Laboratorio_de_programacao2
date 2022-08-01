@@ -19,6 +19,7 @@ public class DocumentoDTO {
 	private String[] texto;
 	private double metricaTextoUtil;
 	private String saida;
+	private String original;
 
 	/**
 	 * Construtor padrão a partir do documento.
@@ -34,6 +35,7 @@ public class DocumentoDTO {
 		this.texto = Arrays.copyOf(d.getTexto(), d.getTexto().length);
 		this.metricaTextoUtil = d.metricaTextoUtil();
 		this.saida = d.toString();
+		this.original = d.getTextoOriginal();
 	}
 
 	/**
@@ -95,12 +97,7 @@ public class DocumentoDTO {
 	}
 	
 	public String getTextoOriginal() {
-		String textoOriginal = new String();
-		for(int i = 0; i < this.texto.length; i++) {
-			textoOriginal += this.texto[i];
-			
-		}
-		return textoOriginal;
+		return this.original;
 	}
 
 	

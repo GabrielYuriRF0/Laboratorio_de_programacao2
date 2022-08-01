@@ -31,6 +31,7 @@ class DocumentoJava implements Documento {
 		var transformaTexto = new TransformaTexto();
 		var txt = transformaTexto.transforma(TransformaTexto.Algoritmos.java, original);
 		this.limpo = transformaTexto.transforma(TransformaTexto.Algoritmos.clean, txt).strip();
+		
 	}
 
 	@Override
